@@ -19,7 +19,7 @@ namespace TracerLib
         private TraceResult result = new TraceResult();
         private Object _startLock = new Object();
         private Object _stopLock = new Object();
-        private Object _ctortLock = new Object();
+        private static Object  _ctortLock = new Object();
 
         private Tracer()
         {
@@ -29,9 +29,13 @@ namespace TracerLib
         {
             get
             {
-                if (instance == null)
+                lock (_ctortLock)
                 {
-                    instance = new Tracer();
+
+                    if (instance == null)
+                    {
+                        instance = new Tracer();
+                    }
                 }
                 return instance;
             }

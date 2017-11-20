@@ -32,12 +32,13 @@ namespace TracedConsoleApp
 
             Cmd.OnExecute(() =>
             {
-                if (ArgHelp.HasValue())  throw new CommandParsingException(Cmd, "");
+                if (ArgHelp.HasValue())  return 0;
                 if (ArgFormat.Value() != null && ArgFormat.Value().Equals("console") && ArgOutput.Values.Count != 0) ArgOutput.Values[0]= null;
                 if (ArgFormat.Value() == null) throw new CommandParsingException(Cmd, "Format haven't been entered");
                 if (!formatters.Keys.Contains(ArgFormat.Value()))
                 {
-                    throw new CommandParsingException(Cmd, $"{ArgFormat.Value()} doesn't present in allowed formats");
+                    throw new CommandParsingException(Cmd, $"{ArgFormat.Value()} doesn't present in allowed formats\n" +
+                        $"{allowedFormats.ToString()}");
                 }
                 return 0;
             });
