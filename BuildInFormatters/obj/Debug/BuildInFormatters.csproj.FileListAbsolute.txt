@@ -1,0 +1,22 @@
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\bin\Debug\BuildInFormatters.dll
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\bin\Debug\BuildInFormatters.pdb
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\bin\Debug\FormatterPluginContract.dll
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\bin\Debug\ModelData.dll
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\bin\Debug\FormatterPluginContract.pdb
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\bin\Debug\ModelData.pdb
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\obj\Debug\BuildInFormatters.csprojResolveAssemblyReference.cache
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\obj\Debug\BuildInFormatters.csproj.CoreCompileInputs.cache
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\obj\Debug\BuildInFormatters.dll
+c:\users\lpv\documents\visual studio 2017\Projects\TracedConsoleApp\BuildInFormatters\obj\Debug\BuildInFormatters.pdb
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\BuildInFormatters.dll
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\BuildInFormatters.pdb
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\FormatterPluginContract.dll
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\ModelData.dll
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\FormatterPluginContract.pdb
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\ModelData.pdb
+D:\Labs\Lab02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csprojResolveAssemblyReference.cache
+D:\Labs\Lab02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csproj.CoreCompileInputs.cache
+D:\Labs\Lab02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.dll
+D:\Labs\Lab02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.pdb
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\YamlDotNet.dll
+D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\YamlDotNet.xml
