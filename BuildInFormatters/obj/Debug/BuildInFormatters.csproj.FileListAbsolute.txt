@@ -20,3 +20,15 @@ D:\Labs\Lab02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.dll
 D:\Labs\Lab02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.pdb
 D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\YamlDotNet.dll
 D:\Labs\Lab02_CLR\BuildInFormatters\bin\Debug\YamlDotNet.xml
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\BuildInFormatters.dll
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\BuildInFormatters.pdb
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\FormatterPluginContract.dll
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\ModelData.dll
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\YamlDotNet.dll
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\FormatterPluginContract.pdb
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\ModelData.pdb
+D:\Labs\Lab_02_CLR\BuildInFormatters\bin\Debug\YamlDotNet.xml
+D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csprojResolveAssemblyReference.cache
+D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csproj.CoreCompileInputs.cache
+D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.dll
+D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.pdb

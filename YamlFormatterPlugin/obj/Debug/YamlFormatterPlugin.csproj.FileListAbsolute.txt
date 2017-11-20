@@ -22,3 +22,7 @@ D:\Labs\Lab02_CLR\YamlFormatterPlugin\obj\Debug\YamlFormatterPlugin.dll
 D:\Labs\Lab02_CLR\YamlFormatterPlugin\obj\Debug\YamlFormatterPlugin.pdb
 D:\Labs\Lab02_CLR\YamlFormatterPlugin\bin\Debug\YamlDotNet.dll
 D:\Labs\Lab02_CLR\YamlFormatterPlugin\bin\Debug\YamlDotNet.xml
+D:\Labs\Lab_02_CLR\YamlFormatterPlugin\obj\Debug\YamlFormatterPlugin.csprojResolveAssemblyReference.cache
+D:\Labs\Lab_02_CLR\YamlFormatterPlugin\obj\Debug\YamlFormatterPlugin.csproj.CoreCompileInputs.cache
+D:\Labs\Lab_02_CLR\YamlFormatterPlugin\obj\Debug\YamlFormatterPlugin.dll
+D:\Labs\Lab_02_CLR\YamlFormatterPlugin\obj\Debug\YamlFormatterPlugin.pdb

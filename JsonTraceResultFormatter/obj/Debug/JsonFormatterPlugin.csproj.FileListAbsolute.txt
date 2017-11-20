@@ -22,3 +22,15 @@ D:\Labs\Lab02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.dl
 D:\Labs\Lab02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.pdb
 D:\Labs\Lab02_CLR\JsonTraceResultFormatter\bin\Debug\YamlDotNet.dll
 D:\Labs\Lab02_CLR\JsonTraceResultFormatter\bin\Debug\YamlDotNet.xml
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\JsonTraceResultFormatter.dll
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\JsonTraceResultFormatter.pdb
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\FormatterPluginContract.dll
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\Newtonsoft.Json.dll
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\YamlDotNet.dll
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\FormatterPluginContract.pdb
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\Newtonsoft.Json.xml
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\YamlDotNet.xml
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonFormatterPlugin.csprojResolveAssemblyReference.cache
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonFormatterPlugin.csproj.CoreCompileInputs.cache
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.dll
+D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.pdb

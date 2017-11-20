@@ -23,11 +23,16 @@ namespace BuildInFormatters
         {
             XmlElement root = XmlDoc.CreateElement("root");
             XmlElement thread = XmlDoc.CreateElement("thread");
-            thread.SetAttribute("id", traceResult.ThreadId.ToString());
-            thread.SetAttribute("time", traceResult.OverallTime.ToString("g"));
-            root.AppendChild(thread);
-            XmlDoc.AppendChild(root);
-            CreateMethodNode(thread, traceResult.Root);
+            for (int i = 0; i < traceResult.Root.Count; i++)
+            {
+                thread.SetAttribute("id", traceResult.Root[i].ThreadId.ToString());
+                thread.SetAttribute("time", traceResult.Root[i].OverallTime.ToString("G"));
+                root.AppendChild(thread);
+                XmlDoc.AppendChild(root);
+                CreateMethodNode(thread, traceResult.Root[i].Root);
+            }
+
+            
             
         }
 

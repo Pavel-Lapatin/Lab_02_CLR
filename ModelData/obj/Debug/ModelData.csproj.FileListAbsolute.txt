@@ -14,3 +14,11 @@ D:\Labs\Lab02_CLR\ModelData\bin\Debug\FormatterPluginContract.dll
 D:\Labs\Lab02_CLR\ModelData\bin\Debug\FormatterPluginContract.pdb
 D:\Labs\Lab02_CLR\ModelData\bin\Debug\YamlDotNet.dll
 D:\Labs\Lab02_CLR\ModelData\bin\Debug\YamlDotNet.xml
+D:\Labs\Lab_02_CLR\ModelData\bin\Debug\ModelData.dll
+D:\Labs\Lab_02_CLR\ModelData\bin\Debug\ModelData.pdb
+D:\Labs\Lab_02_CLR\ModelData\bin\Debug\FormatterPluginContract.dll
+D:\Labs\Lab_02_CLR\ModelData\bin\Debug\FormatterPluginContract.pdb
+D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.csprojResolveAssemblyReference.cache
+D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.csproj.CoreCompileInputs.cache
+D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.dll
+D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.pdb

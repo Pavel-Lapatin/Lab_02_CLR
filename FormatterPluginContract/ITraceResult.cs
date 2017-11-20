@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YamlDotNet.Serialization;
 
 namespace FormatterPluginContract
 {
     public interface IMethodNode
     {
-        [YamlIgnore]
         long StartExecutionTime { get; set; }
         TimeSpan ExecutionTime { get; set; }
         string MethodName { get; set; }
@@ -18,11 +16,16 @@ namespace FormatterPluginContract
         IList<IMethodNode> ChildNodes { get; set; }
     }
 
-    public interface ITraceResult
+    public interface IThreadNode
     {
         int ThreadId { get; set; }
-        TimeSpan OverallTime { get; set; }
+        string ThreadName { get; set; }
         IList<IMethodNode> Root { get; set; }
-        
+        TimeSpan OverallTime { get; set; }
+    }
+
+    public interface ITraceResult
+    {
+        IList<IThreadNode> Root { get; set; }
     }
 }

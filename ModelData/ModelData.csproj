@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="MethodNode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ThreadNode.cs" />
     <Compile Include="TraceResult.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -13,14 +13,13 @@ namespace TracerLib
     public class Tracer : ITracer
     {
         private static Tracer instance = null;
+        private IDictionary<int, Stack<MethodNode>> StacksForThreads = new Dictionary<int, Stack<MethodNode>>();
         private Stack<MethodNode> StackForInvokedMethods = new Stack<MethodNode>();
         private static Stopwatch watch = new Stopwatch();
         private TraceResult result = new TraceResult();
 
         private Tracer()
         {
-            result.ThreadId =  Thread.CurrentThread.ManagedThreadId;
-            result.Root = new List<IMethodNode>();
         }
 
         public static Tracer Instance
@@ -44,6 +43,27 @@ namespace TracerLib
         public void StartTrace()
         {
             watch.Stop();
+            Stack<MethodNode> currentStack;
+            var threadId = Thread.CurrentThread.ManagedThreadId;
+            var currentThreadNode = result.Root.FirstOrDefault(x => x.ThreadId == threadId);
+            if(currentThreadNode != null)
+            {
+                currentStack = StacksForThreads[threadId];
+
+            }
+            else
+            {
+                currentStack = new Stack<MethodNode>();
+                StacksForThreads.Add(threadId, currentStack);
+                currentThreadNode = new ThreadNode
+                {
+                    ThreadId = Thread.CurrentThread.ManagedThreadId,
+                    ThreadName = Thread.CurrentThread.Name,
+                    Root = new List<IMethodNode>()
+
+                };
+                result.Root.Add(currentThreadNode);
+            }
             var stackTrace = new StackTrace();
             var frame = stackTrace.GetFrame(1);
             var methodBase = frame.GetMethod();
@@ -55,9 +75,9 @@ namespace TracerLib
                 ParametrCounts = methodBase.GetParameters().Length,
                 ChildNodes = new List<IMethodNode>(),
             };
-            if (StackForInvokedMethods.Count == 0)
+            if (currentStack.Count == 0)
             {
-                result.Root.Add(currentMethod);
+                currentThreadNode.Root.Add(currentMethod);
             }
             else
             {
@@ -70,12 +90,20 @@ namespace TracerLib
         public void StopTrace()
         {
             watch.Stop();
-            if (StackForInvokedMethods.Peek() != null)
+            var threadId = Thread.CurrentThread.ManagedThreadId;
+            var currentThreadNode = result.Root.FirstOrDefault(x => x.ThreadId == threadId);
+            if (currentThreadNode != null)
             {
-                var currentMethod = StackForInvokedMethods.Pop();
+                Console.WriteLine("This is impossible");
+            }
+            var currentStack = StacksForThreads[threadId];
+
+            if (currentStack.Peek() != null)
+            {
+                var currentMethod = currentStack.Pop();
                 long time = watch.ElapsedTicks - currentMethod.StartExecutionTime;
                 currentMethod.ExecutionTime = TimeSpan.FromTicks(time);
-                result.OverallTime = TimeSpan.FromTicks(result.OverallTime.Ticks + time);
+                currentThreadNode.OverallTime = TimeSpan.FromTicks(currentThreadNode.OverallTime.Ticks + time);
             }
 
             watch.Start();

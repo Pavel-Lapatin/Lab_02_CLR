@@ -20,3 +20,13 @@ D:\Labs\Lab02_CLR\TracerLib\obj\Debug\TracerLib.dll
 D:\Labs\Lab02_CLR\TracerLib\obj\Debug\TracerLib.pdb
 D:\Labs\Lab02_CLR\TracerLib\bin\Debug\YamlDotNet.dll
 D:\Labs\Lab02_CLR\TracerLib\bin\Debug\YamlDotNet.xml
+D:\Labs\Lab_02_CLR\TracerLib\bin\Debug\TracerLib.dll
+D:\Labs\Lab_02_CLR\TracerLib\bin\Debug\TracerLib.pdb
+D:\Labs\Lab_02_CLR\TracerLib\bin\Debug\FormatterPluginContract.dll
+D:\Labs\Lab_02_CLR\TracerLib\bin\Debug\ModelData.dll
+D:\Labs\Lab_02_CLR\TracerLib\bin\Debug\FormatterPluginContract.pdb
+D:\Labs\Lab_02_CLR\TracerLib\bin\Debug\ModelData.pdb
+D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.csprojResolveAssemblyReference.cache
+D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.csproj.CoreCompileInputs.cache
+D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.dll
+D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.pdb

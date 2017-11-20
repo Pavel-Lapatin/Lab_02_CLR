@@ -10,16 +10,12 @@ namespace ModelData
 {
     public class TraceResult : ITraceResult
     {
-        
-        public int ThreadId { get; set; }
-        
-        public IList<IMethodNode> Root { get; set; }
-       
-        public TimeSpan OverallTime { get; set; }
-       
+        public IList<IThreadNode> Root { get; set; }
+
         public TraceResult()
         {
-            Root = new List<IMethodNode>();
+            Root = new List<IThreadNode>();
         }
     }
+        
 }
