@@ -21,8 +21,8 @@ namespace TracedConsoleApp
                 ICollection<Assembly> assemblies = new List<Assembly>(dllFileNames.Length);
                 foreach (string dllFile in dllFileNames)
                 {
-                    AssemblyName an = AssemblyName.GetAssemblyName(dllFile);
-                    Assembly assembly = Assembly.Load(an);
+                    AssemblyName assemblyName = AssemblyName.GetAssemblyName(dllFile);
+                    Assembly assembly = Assembly.Load(assemblyName);
                     assemblies.Add(assembly);
                 }
 
@@ -32,29 +32,27 @@ namespace TracedConsoleApp
                 {
                     if (assembly != null)
                     {
-                        Type[] types;
                         try
                         {
-                            types = assembly.GetTypes();
-
-                        } catch (ReflectionTypeLoadException e)
-                        {
-                            Console.WriteLine(e.Message);
-                            continue;
-                        }
-                        foreach (Type type in types)
-                        {
-                            if (type.IsInterface || type.IsAbstract)
+                            foreach (Type type in assembly.GetTypes())
                             {
-                                continue;
-                            }
-                            else
-                            {
-                                if (type.GetInterface(pluginType.FullName) != null)
+                                if (type.IsInterface || type.IsAbstract)
                                 {
-                                    pluginTypes.Add(type);
+                                    continue;
+                                }
+                                else
+                                {
+                                    if (type.GetInterface(pluginType.FullName) != null)
+                                    {
+                                        pluginTypes.Add(type);
+                                    }
                                 }
                             }
+                        }
+                        catch (ReflectionTypeLoadException e)
+                        {
+                            Console.WriteLine($"Error is raised in {e.Source}");
+                            continue;
                         }
                     }
                 }
@@ -64,10 +62,8 @@ namespace TracedConsoleApp
                     ITraceResultFormatter plugin = (ITraceResultFormatter)Activator.CreateInstance(type);
                     awailableFormatters.Add(plugin.FlagValue, plugin);
                 }
-
                 return awailableFormatters;
             }
-
             return null;
         }
     }

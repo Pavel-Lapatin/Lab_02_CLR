@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace JsonTraceResultFormatter
 {
@@ -16,8 +17,8 @@ namespace JsonTraceResultFormatter
 
         public void Format(ITraceResult traceResult)
         {
-            JsonSerializerSettings settings = new JsonSerializerSettings();
-            Output = JsonConvert.SerializeObject(traceResult.Root);
+            string result = JsonConvert.SerializeObject(traceResult, Formatting.Indented);
+            Output = result;
         }
 
         public string GetFormat()

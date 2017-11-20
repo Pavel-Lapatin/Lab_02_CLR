@@ -19,10 +19,6 @@ namespace YamlFormatterPlugin
         {
             var serializer = new SerializerBuilder().Build();
             Output = serializer.Serialize(traceResult);
-            
-
-            //var serializer = new YamlSerializer();
-            //Output = serializer.Serialize(traceResult);
         }
 
         public string GetFormat()

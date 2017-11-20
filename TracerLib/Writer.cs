@@ -19,7 +19,7 @@ namespace TracedConsoleApp
             _filePath = filePath;
         }
 
-        public void WriteResult(TraceResult results)
+        public void WriteResult(ITraceResult results)
         {
             try
             {
@@ -32,9 +32,8 @@ namespace TracedConsoleApp
             if (_filePath == null)
             {
                 using (TextWriter writer = Console.Out)
-                {
-                  writer.Write(_formatter.GetFormat());
-                   
+                { 
+                    writer.Write(_formatter.GetFormat());
                 }
             }
             else
@@ -46,11 +45,11 @@ namespace TracedConsoleApp
                         writer.Write(_formatter.GetFormat());
                     }
                 }
-                catch (DirectoryNotFoundException e)
+                catch (DirectoryNotFoundException)
                 {
                     Console.WriteLine("Directory hasn' been found");
                 }
-                catch (UnauthorizedAccessException e)
+                catch (UnauthorizedAccessException)
                 {
                     Console.WriteLine("You are not allowed to write into this Directory");
                 }

@@ -32,3 +32,13 @@ D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csprojResolveAs
 D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csproj.CoreCompileInputs.cache
 D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.dll
 D:\Labs\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.pdb
+E:\Godel\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csprojResolveAssemblyReference.cache
+E:\Godel\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.csproj.CoreCompileInputs.cache
+E:\Godel\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.dll
+E:\Godel\Lab_02_CLR\BuildInFormatters\obj\Debug\BuildInFormatters.pdb
+E:\Godel\Lab_02_CLR\BuildInFormatters\bin\Debug\BuildInFormatters.dll
+E:\Godel\Lab_02_CLR\BuildInFormatters\bin\Debug\BuildInFormatters.pdb
+E:\Godel\Lab_02_CLR\BuildInFormatters\bin\Debug\FormatterPluginContract.dll
+E:\Godel\Lab_02_CLR\BuildInFormatters\bin\Debug\ModelData.dll
+E:\Godel\Lab_02_CLR\BuildInFormatters\bin\Debug\FormatterPluginContract.pdb
+E:\Godel\Lab_02_CLR\BuildInFormatters\bin\Debug\ModelData.pdb

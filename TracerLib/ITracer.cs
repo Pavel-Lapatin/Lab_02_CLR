@@ -1,4 +1,5 @@
-﻿using ModelData;
+﻿using FormatterPluginContract;
+using ModelData;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,6 @@ namespace TracerLib
     {
         void StartTrace();
         void StopTrace();
-        TraceResult GetTraceResult();
+        ITraceResult GetTraceResult();
     }
 }

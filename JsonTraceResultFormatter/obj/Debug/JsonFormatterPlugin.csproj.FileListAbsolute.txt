@@ -34,3 +34,13 @@ D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonFormatterPlugin.csproj
 D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonFormatterPlugin.csproj.CoreCompileInputs.cache
 D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.dll
 D:\Labs\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.pdb
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\JsonTraceResultFormatter.dll
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\JsonTraceResultFormatter.pdb
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\FormatterPluginContract.dll
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\Newtonsoft.Json.dll
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\FormatterPluginContract.pdb
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\bin\Debug\Newtonsoft.Json.xml
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonFormatterPlugin.csprojResolveAssemblyReference.cache
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonFormatterPlugin.csproj.CoreCompileInputs.cache
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.dll
+E:\Godel\Lab_02_CLR\JsonTraceResultFormatter\obj\Debug\JsonTraceResultFormatter.pdb

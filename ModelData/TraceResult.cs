@@ -8,6 +8,7 @@ using System.Xml.Serialization;
 
 namespace ModelData
 {
+    [Serializable]
     public class TraceResult : ITraceResult
     {
         public IList<IThreadNode> Root { get; set; }

@@ -20,3 +20,9 @@ D:\Labs\Lab_02_CLR\FormatterPluginContract\obj\Debug\FormatterPluginContract.dll
 D:\Labs\Lab_02_CLR\FormatterPluginContract\obj\Debug\FormatterPluginContract.pdb
 D:\Labs\Lab_02_CLR\FormatterPluginContract\bin\Debug\FormatterPluginContract.dll
 D:\Labs\Lab_02_CLR\FormatterPluginContract\bin\Debug\FormatterPluginContract.pdb
+E:\Godel\Lab_02_CLR\FormatterPluginContract\bin\Debug\FormatterPluginContract.dll
+E:\Godel\Lab_02_CLR\FormatterPluginContract\bin\Debug\FormatterPluginContract.pdb
+E:\Godel\Lab_02_CLR\FormatterPluginContract\obj\Debug\FormatterPluginContract.csprojResolveAssemblyReference.cache
+E:\Godel\Lab_02_CLR\FormatterPluginContract\obj\Debug\FormatterPluginContract.csproj.CoreCompileInputs.cache
+E:\Godel\Lab_02_CLR\FormatterPluginContract\obj\Debug\FormatterPluginContract.dll
+E:\Godel\Lab_02_CLR\FormatterPluginContract\obj\Debug\FormatterPluginContract.pdb

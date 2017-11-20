@@ -22,3 +22,11 @@ D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.csprojResolveAssemblyReference.
 D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.csproj.CoreCompileInputs.cache
 D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.dll
 D:\Labs\Lab_02_CLR\ModelData\obj\Debug\ModelData.pdb
+E:\Godel\Lab_02_CLR\ModelData\bin\Debug\ModelData.dll
+E:\Godel\Lab_02_CLR\ModelData\bin\Debug\ModelData.pdb
+E:\Godel\Lab_02_CLR\ModelData\bin\Debug\FormatterPluginContract.dll
+E:\Godel\Lab_02_CLR\ModelData\bin\Debug\FormatterPluginContract.pdb
+E:\Godel\Lab_02_CLR\ModelData\obj\Debug\ModelData.csprojResolveAssemblyReference.cache
+E:\Godel\Lab_02_CLR\ModelData\obj\Debug\ModelData.csproj.CoreCompileInputs.cache
+E:\Godel\Lab_02_CLR\ModelData\obj\Debug\ModelData.dll
+E:\Godel\Lab_02_CLR\ModelData\obj\Debug\ModelData.pdb

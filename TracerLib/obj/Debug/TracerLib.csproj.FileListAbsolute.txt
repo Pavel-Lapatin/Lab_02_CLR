@@ -30,3 +30,13 @@ D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.csprojResolveAssemblyReference.
 D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.csproj.CoreCompileInputs.cache
 D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.dll
 D:\Labs\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.pdb
+E:\Godel\Lab_02_CLR\TracerLib\bin\Debug\TracerLib.dll
+E:\Godel\Lab_02_CLR\TracerLib\bin\Debug\TracerLib.pdb
+E:\Godel\Lab_02_CLR\TracerLib\bin\Debug\FormatterPluginContract.dll
+E:\Godel\Lab_02_CLR\TracerLib\bin\Debug\ModelData.dll
+E:\Godel\Lab_02_CLR\TracerLib\bin\Debug\FormatterPluginContract.pdb
+E:\Godel\Lab_02_CLR\TracerLib\bin\Debug\ModelData.pdb
+E:\Godel\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.csprojResolveAssemblyReference.cache
+E:\Godel\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.csproj.CoreCompileInputs.cache
+E:\Godel\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.dll
+E:\Godel\Lab_02_CLR\TracerLib\obj\Debug\TracerLib.pdb

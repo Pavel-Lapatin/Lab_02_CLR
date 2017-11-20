@@ -22,9 +22,10 @@ namespace BuildInFormatters
         public void Format(ITraceResult traceResult)
         {
             XmlElement root = XmlDoc.CreateElement("root");
-            XmlElement thread = XmlDoc.CreateElement("thread");
+            
             for (int i = 0; i < traceResult.Root.Count; i++)
             {
+                XmlElement thread = XmlDoc.CreateElement("thread");
                 thread.SetAttribute("id", traceResult.Root[i].ThreadId.ToString());
                 thread.SetAttribute("time", traceResult.Root[i].OverallTime.ToString("G"));
                 root.AppendChild(thread);
@@ -60,8 +61,9 @@ namespace BuildInFormatters
         {
             using (var stringWriter = new StringWriter())
             {
-                using (var xmlTextWriter = XmlWriter.Create(stringWriter))
+                using (var xmlTextWriter = new XmlTextWriter(stringWriter))
                 {
+                    xmlTextWriter.Formatting = Formatting.Indented;
                     XmlDoc.WriteTo(xmlTextWriter);
                     xmlTextWriter.Flush();
                     return stringWriter.GetStringBuilder().ToString();

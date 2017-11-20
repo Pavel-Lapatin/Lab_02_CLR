@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using ModelData;
 
 namespace BuildInFormatters
 {
@@ -16,13 +14,15 @@ namespace BuildInFormatters
         {
             StringBuilder strBuilder = new StringBuilder();
             strBuilder.AppendLine($"root");
-            strBuilder.AppendLine($"    thread id {traceResult.ThreadId.ToString()}, time: {traceResult.OverallTime.Ticks} ticks");
-            AddMethodNodeInfo(traceResult.Root, strBuilder, 1);
-            strBuilder.AppendLine($"    thread");
+            for (int i = 0; i < traceResult.Root.Count; i++)
+            {
+                strBuilder.AppendLine($"    thread id {traceResult.Root[i].ThreadId.ToString()}, time: {traceResult.Root[i].OverallTime.Ticks} ticks");
+                AddMethodNodeInfo(traceResult.Root[i].Root, strBuilder, 1);
+                strBuilder.AppendLine($"    thread");
+            }
             strBuilder.AppendLine($"root");
             Output = strBuilder.ToString();
         }
-
         private void AddMethodNodeInfo(IList<IMethodNode> parentMethod, StringBuilder strBuilder, int pos)
         {
             int i = 0;
@@ -40,7 +40,6 @@ namespace BuildInFormatters
                 i++;
             }
         }
-
         public string GetFormat()
         {
             return Output;

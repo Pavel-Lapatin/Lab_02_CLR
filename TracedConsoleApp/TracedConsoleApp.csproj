@@ -64,10 +64,6 @@
       <Project>{59960df0-c050-41a5-b587-0f2a5bce8e78}</Project>
       <Name>FormatterPluginContract</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ModelData\ModelData.csproj">
-      <Project>{0a891b97-bd96-4e00-8714-c0337e6fb1af}</Project>
-      <Name>ModelData</Name>
-    </ProjectReference>
     <ProjectReference Include="..\TracerLib\TracerLib.csproj">
       <Project>{d944d714-0b7d-4548-b14d-ae6a76cce4aa}</Project>
       <Name>TracerLib</Name>

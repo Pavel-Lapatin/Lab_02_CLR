@@ -12,8 +12,6 @@ namespace ModelData
     [Serializable]
     public class MethodNode : IMethodNode
     {
-        [IgnoreDataMember]
-        public long StartExecutionTime { get; set; }
         public TimeSpan ExecutionTime { get; set; }
         public string MethodName { get; set; }
         public string ClassName { get; set; }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ModelData
 {
+    [Serializable]
     public class ThreadNode : IThreadNode
     {
         public int ThreadId { get; set; }

@@ -8,7 +8,6 @@ namespace FormatterPluginContract
 {
     public interface IMethodNode
     {
-        long StartExecutionTime { get; set; }
         TimeSpan ExecutionTime { get; set; }
         string MethodName { get; set; }
         string ClassName { get; set; }
