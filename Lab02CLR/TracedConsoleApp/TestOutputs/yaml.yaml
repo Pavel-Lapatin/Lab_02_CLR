@@ -1,0 +1,30 @@
+Root:
+- ThreadId: 1
+  Root:
+  - ExecutionTime: 00:00:00.0005965
+    MethodName: TestMethod1
+    ClassName: Program
+    ChildNodes:
+    - ExecutionTime: 00:00:00.0005102
+      MethodName: TesMethod2
+      ClassName: Program
+      ParametrCounts: 1
+      ChildNodes: []
+  - ExecutionTime: 00:00:00.0000018
+    MethodName: TestMethod3
+    ClassName: Program
+    ParametrCounts: 1
+    ChildNodes: []
+  OverallTime: 00:00:00.0011085
+- ThreadId: 3
+  Root:
+  - ExecutionTime: 00:00:00.0002617
+    MethodName: TestMethod1
+    ClassName: Program
+    ChildNodes:
+    - ExecutionTime: 00:00:00.0002260
+      MethodName: TesMethod2
+      ClassName: Program
+      ParametrCounts: 1
+      ChildNodes: []
+  OverallTime: 00:00:00.0004877

@@ -1,0 +1,55 @@
+{
+  "Root": [
+    {
+      "ThreadId": 1,
+      "ThreadName": null,
+      "Root": [
+        {
+          "ExecutionTime": "00:00:00.0007947",
+          "MethodName": "TestMethod1",
+          "ClassName": "Program",
+          "ParametrCounts": 0,
+          "ChildNodes": [
+            {
+              "ExecutionTime": "00:00:00.0006938",
+              "MethodName": "TesMethod2",
+              "ClassName": "Program",
+              "ParametrCounts": 1,
+              "ChildNodes": []
+            }
+          ]
+        },
+        {
+          "ExecutionTime": "00:00:00.0000018",
+          "MethodName": "TestMethod3",
+          "ClassName": "Program",
+          "ParametrCounts": 1,
+          "ChildNodes": []
+        }
+      ],
+      "OverallTime": "00:00:00.0014903"
+    },
+    {
+      "ThreadId": 3,
+      "ThreadName": null,
+      "Root": [
+        {
+          "ExecutionTime": "00:00:00.0003608",
+          "MethodName": "TestMethod1",
+          "ClassName": "Program",
+          "ParametrCounts": 0,
+          "ChildNodes": [
+            {
+              "ExecutionTime": "00:00:00.0002721",
+              "MethodName": "TesMethod2",
+              "ClassName": "Program",
+              "ParametrCounts": 1,
+              "ChildNodes": []
+            }
+          ]
+        }
+      ],
+      "OverallTime": "00:00:00.0006329"
+    }
+  ]
+}

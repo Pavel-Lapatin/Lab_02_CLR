@@ -1,1 +1,0 @@
-<root><thread id="1" time="0:00:00.0007963"><method name="TestMethod1" time="0:00:00.0004474" class="Program" params="0"><method name="TesMethod2" time="0:00:00.0003479" class="Program" params="1" /></method><method name="TestMethod3" time="0:00:00.000001" class="Program" params="1" /></thread></root>

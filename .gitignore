@@ -1,0 +1,10 @@
+.vs/**
+packages/
+*.sln
+Lab02CLR/**/bin
+Lab02CLR/**/obj
+Lab02CLR/**/*.csproj*
+Lab02CLR/**/.vs
+Lab02CLR/**/*.dll
+Lab02CLR/**/*.exe
+Lab02CLR/**/*.log
