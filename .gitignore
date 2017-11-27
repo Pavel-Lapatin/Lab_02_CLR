@@ -1,5 +1,6 @@
 .vs/**
-packages/
+packages
+Lab02CLR/**/packages
 Lab02CLR/**/bin
 Lab02CLR/**/obj
 Lab02CLR/**/.vs

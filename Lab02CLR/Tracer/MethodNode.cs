@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
 
 namespace NetMastery.Lab02CLR.TracerLibrary

@@ -6,16 +6,16 @@ namespace NetMastery.Lab02CLR.TracerLibrary
     internal class TracerMethodNode : MethodNode
     {
         [NonSerialized]
-        private readonly long _startExecutionTime;
+        private readonly long startExecutionTime;
 
         public TracerMethodNode(long startExecutionTime)
         {
-            _startExecutionTime = startExecutionTime;
+            this.startExecutionTime = startExecutionTime;
         }
 
         public long GetStartExecutionTime()
         {
-            return _startExecutionTime;
+            return startExecutionTime;
         }
     }
 }

@@ -22,7 +22,7 @@ namespace NetMastery.Lab02CLR.Formatters.BuiltInFormatters
         {
             var xmlThreadNode = new XmlThreadNode
             {
-                OverallTime = threadNode.OverallTime,
+                OverallTime = threadNode.OverallTime.Milliseconds,
                 ThreadId = threadNode.ThreadId,
                 ThreadName = threadNode.ThreadName,
                 Root = new List<XmlMethodNode>()
@@ -38,7 +38,7 @@ namespace NetMastery.Lab02CLR.Formatters.BuiltInFormatters
         {
             var xmlMethodNode = new XmlMethodNode
             {
-                ExecutionTime = methodNode.ExecutionTime,
+                ExecutionTime = methodNode.ExecutionTime.TotalMilliseconds,
                 ClassName = methodNode.ClassName,
                 MethodName = methodNode.MethodName,
                 ParametrCounts = methodNode.ParametrCounts,

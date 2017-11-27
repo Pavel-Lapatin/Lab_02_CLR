@@ -21,13 +21,12 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
             ArgHelp = Cmd.Option(Strings.HelpOptions, Strings.HelpHelp, CommandOptionType.NoValue);
 
             var allowedFormats = new StringBuilder();
-            allowedFormats.Append(Strings.AllowedFormattsBegin);
+            allowedFormats.Append(Strings.AllowedFormatts);
             foreach (var key in formatters.Keys)
             {
-                allowedFormats.Append($"{key}, ");
+                allowedFormats.Append($" {key},");
             }
-            allowedFormats.Length = (allowedFormats.Length - 2);
-            Cmd.ExtendedHelpText = allowedFormats.ToString();
+            Cmd.ExtendedHelpText = allowedFormats.ToString().TrimEnd(',', ' ');
 
             Cmd.OnExecute(() =>
             {

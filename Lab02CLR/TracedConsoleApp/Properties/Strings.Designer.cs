@@ -63,9 +63,9 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Following output formats are allowed:.
         /// </summary>
-        internal static string AllowedFormattsBegin {
+        internal static string AllowedFormatts {
             get {
-                return ResourceManager.GetString("AllowedFormattsBegin", resourceCulture);
+                return ResourceManager.GetString("AllowedFormatts", resourceCulture);
             }
         }
         
@@ -81,18 +81,20 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Directory hasn&apos;t been found.
         /// </summary>
-        internal static string DirectoryException {
+        internal static string DirectoryNotFoundException
+        {
             get {
-                return ResourceManager.GetString("DirectoryException", resourceCulture);
+                return ResourceManager.GetString("DirectoryNotFoundException", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Path file for plugins doesn&apos;t located in app.config.
         /// </summary>
-        internal static string FileForPluginsNotFoundException {
+        internal static string DirectoryNotFoundExceptionForPlugins
+        {
             get {
-                return ResourceManager.GetString("FileForPluginsNotFoundException", resourceCulture);
+                return ResourceManager.GetString("DirectoryNotFoundExceptionForPlugins", resourceCulture);
             }
         }
         
@@ -171,18 +173,20 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Some Assamblies dont&apos;t exist on  which  .
         /// </summary>
-        internal static string OtherAssemblyFilesNotFoundException {
+        internal static string FileNotFoundExceptionForAssembly
+        {
             get {
-                return ResourceManager.GetString("OtherAssemblyFilesNotFoundException", resourceCulture);
+                return ResourceManager.GetString("FileNotFoundExceptionForAssembly", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Path for output file doesn&apos;t exists.
         /// </summary>
-        internal static string OutputFileException {
+        internal static string DirectoryNotFoundExceptionForOutput
+        {
             get {
-                return ResourceManager.GetString("OutputFileException", resourceCulture);
+                return ResourceManager.GetString("DirectoryNotFoundExceptionForOutput", resourceCulture);
             }
         }
         
@@ -207,9 +211,9 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Pathfile for directory is too long.
         /// </summary>
-        internal static string PathTooLong {
+        internal static string PathTooLongException {
             get {
-                return ResourceManager.GetString("PathTooLong", resourceCulture);
+                return ResourceManager.GetString("PathTooLongException", resourceCulture);
             }
         }
         
@@ -252,9 +256,18 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Error undefined.
         /// </summary>
-        internal static string UndefinedExceptionMethod {
+        internal static string UndefinedExceptionForMethod
+        {
             get {
-                return ResourceManager.GetString("UndefinedExceptionMethod", resourceCulture);
+                return ResourceManager.GetString("UndefinedExceptionForMethod", resourceCulture);
+            }
+        }
+
+        internal static string UndefinedExceptionForPluginsLoader
+        {
+            get
+            {
+                return ResourceManager.GetString("UndefinedExceptionForPluginsLoader", resourceCulture);
             }
         }
     }

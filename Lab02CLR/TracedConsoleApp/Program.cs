@@ -28,7 +28,7 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                 }
                 catch (ConfigurationErrorsException)
                 {
-                    Console.WriteLine(Strings.FileForPluginsNotFoundException);
+                    Console.WriteLine(Strings.DirectoryNotFoundExceptionForPlugins);
                 }
                 var formatters = GetAvailableFormatters(filePath);
                 var cmdOptions = new Options(formatters);
@@ -41,10 +41,7 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                         char[] separators = {' '};
                         Console.WriteLine(Strings.InputNote);
                         var arguments = Console.ReadLine();
-                        if (!string.IsNullOrEmpty(arguments))
-                        {
-                            args = arguments.Split(separators);
-                        } 
+                        args = arguments.Split(separators);
                     }
                     else
                     {
@@ -52,7 +49,7 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                         TestMethod1();
                         var secondThread = new Thread(TestMethod1);
                         secondThread.Start();
-                        Thread.Sleep(1000);
+                        secondThread.Join();
                         TestMethod3("Finished");
                         try
                         {
@@ -63,15 +60,15 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                             }
                             else
                             {
-                                  var writer = new FileWriter(formatters[cmdOptions.ArgFormat.Value()],
-                                        cmdOptions.ArgOutput.Value());
-                                    writer.WriteResult(Tracer.Instance.GetTraceResult());
+                                var writer = new FileWriter(formatters[cmdOptions.ArgFormat.Value()],
+                                      cmdOptions.ArgOutput.Value());
+                                writer.WriteResult(Tracer.Instance.GetTraceResult());
                                 Console.WriteLine(Strings.SuccessWriting);
                             }
                         }
                         catch (IOException)
                         {
-                            Console.WriteLine(Strings.OutputFileException);
+                            Console.WriteLine(Strings.DirectoryNotFoundExceptionForOutput);
                         }
                         break;
                     }
@@ -79,12 +76,12 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
             }
             catch (CommandParsingException e)
             {
+                e.Command.ShowHelp();
                 Console.WriteLine(e.Message);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                Console.WriteLine(e.ToString());
-                Console.WriteLine(Strings.UndefinedExceptionMethod);
+                Console.WriteLine(Strings.UndefinedExceptionForMethod);
             }
             Console.WriteLine(Strings.FinishedAppNote);
             Console.ReadKey();
@@ -94,7 +91,7 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
         {
             Tracer.Instance.StartTrace();
             double result = 0;
-            for (var i = 0; i < 10000; i++)
+            for (var i = 0; i < 1000000; i++)
             {
                 result += Math.Sqrt(i);
             }
@@ -105,24 +102,19 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
         public static void TesMethod2(double res)
         {
             Tracer.Instance.StartTrace();
-            for (var i = 0; i < 10000; i++)
+            for (var i = 0; i < 1000000; i++)
             {
                 res -= Math.Pow(i, 2);
             }
             Tracer.Instance.StopTrace();
         }
 
-        public static string TestMethod3(string text)
+        public static void TestMethod3(string text)
         {
             Tracer.Instance.StartTrace();
-            try
-            {
-                return $"{text}";
-            }
-            finally
-            {
-                Tracer.Instance.StopTrace();
-            }
+            Thread.Sleep(5000);
+            Tracer.Instance.StopTrace();
+
         }
 
         public static IDictionary<string, ITraceResultFormatter> GetAvailableFormatters(string path)
@@ -135,9 +127,9 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
             {
                 PluginsLoader.LoadPlugins(path, availableFormatters);
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
-                
+                Console.WriteLine(Strings.UndefinedExceptionForPluginsLoader);
             }
             return availableFormatters;
         }

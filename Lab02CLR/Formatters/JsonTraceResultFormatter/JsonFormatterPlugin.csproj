@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NetMastery.Lab02CLR.Formatters.JsonFormatterPlugin</RootNamespace>
-    <AssemblyName>JsonFormatterPlugin</AssemblyName>
+    <AssemblyName>NetMastery.Lab02CLR.Formatters.JsonFormatterPlugin</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

@@ -117,17 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AllowedFormattsBegin" xml:space="preserve">
+  <data name="AllowedFormatts" xml:space="preserve">
     <value>Following output formats are allowed:</value>
   </data>
   <data name="AssemblyLoadException" xml:space="preserve">
     <value>Assembly couldn't be loaded: </value>
   </data>
-  <data name="DirectoryException" xml:space="preserve">
+  <data name="DirectoryNotFoundException" xml:space="preserve">
     <value>Directory hasn't been found</value>
   </data>
-  <data name="FileForPluginsNotFoundException" xml:space="preserve">
+  <data name="DirectoryNotFoundExceptionForOutput" xml:space="preserve">
+    <value>Path for output file doesn't exists</value>
+  </data>
+  <data name="FileNotFoundExceptionForPlugins" xml:space="preserve">
     <value>Path file for plugins doesn't located in app.config</value>
+  </data>
+  <data name="FilesNotFoundExceptionForAssembly" xml:space="preserve">
+    <value>Some assamblies dont't exist on  which  </value>
   </data>
   <data name="FinishedAppNote" xml:space="preserve">
     <value>Please, push any botton...</value>
@@ -135,7 +141,7 @@
   <data name="FormatConstraint" xml:space="preserve">
     <value>Option --f | -format is required</value>
   </data>
-  <data name="FormatDoesntExistExeption" xml:space="preserve">
+  <data name="FormatExistsExeption" xml:space="preserve">
     <value>doesn't present in allowed formats\n</value>
   </data>
   <data name="FormatHelp" xml:space="preserve">
@@ -153,19 +159,13 @@
   <data name="InputNote" xml:space="preserve">
     <value>Please, enter options</value>
   </data>
-  <data name="OtherAssemblyFilesNotFoundException" xml:space="preserve">
-    <value>Some Assamblies dont't exist on  which  </value>
-  </data>
-  <data name="OutputFileException" xml:space="preserve">
-    <value>Path for output file doesn't exists</value>
-  </data>
   <data name="OutputHelp" xml:space="preserve">
     <value>The path to the file for saving program result.</value>
   </data>
   <data name="OutputOptions" xml:space="preserve">
     <value>--o | -output &lt;output&gt;</value>
   </data>
-  <data name="PathTooLong" xml:space="preserve">
+  <data name="PathTooLongException" xml:space="preserve">
     <value>Pathfile for directory is too long</value>
   </data>
   <data name="PluginTypeAddException" xml:space="preserve">
@@ -180,7 +180,10 @@
   <data name="UnathorizedException" xml:space="preserve">
     <value>Don't have access to </value>
   </data>
-  <data name="UndefinedExceptionMethod" xml:space="preserve">
+  <data name="UndefinedExceptionForMethod" xml:space="preserve">
     <value>Error undefined</value>
+  </data>
+  <data name="UndefinedExceptionForPluginsLoader" xml:space="preserve">
+    <value>Some undefined exception has been raised during plugins loading</value>
   </data>
 </root>

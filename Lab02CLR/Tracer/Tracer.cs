@@ -9,36 +9,36 @@ namespace NetMastery.Lab02CLR.TracerLibrary
 {
     public class Tracer : ITracer
     {
-        private static Tracer _instance;
+        private static Tracer instance;
 
-        private readonly IDictionary<ThreadNode, Stack<TracerMethodNode>> _stacksForThreads =
+        private IDictionary<ThreadNode, Stack<TracerMethodNode>> stacksForThreads =
             new Dictionary<ThreadNode, Stack<TracerMethodNode>>();
 
-        private static readonly Stopwatch Watch = new Stopwatch();
-        private readonly object _startLock = new object();
-        private readonly object _stopLock = new object();
-        private static readonly object CtortLock = new object();
+        private Stopwatch watch = new Stopwatch();
+        private object startLock = new object();
+        private object stopLock = new object();
+        private static object ctortLock = new object();
 
         public static Tracer Instance
         {
             get
             {
-                lock (CtortLock)
+                lock (ctortLock)
                 {
 
-                    if (_instance == null)
+                    if (instance == null)
                     {
-                        _instance = new Tracer();
+                        instance = new Tracer();
                     }
                 }
-                return _instance;
+                return instance;
             }
         }
 
         public ITraceResult GetTraceResult()
         {
             var results = new TraceResult();
-            foreach (var thread in _stacksForThreads.Keys)
+            foreach (var thread in stacksForThreads.Keys)
             {
                 results.Root.Add(thread);
             }
@@ -47,9 +47,9 @@ namespace NetMastery.Lab02CLR.TracerLibrary
 
         public void StartTrace()
         {
-            lock (_startLock)
+            lock (startLock)
             {
-                Watch.Stop();
+                watch.Stop();
                 var threadId = Thread.CurrentThread.ManagedThreadId;
                 var currentThreadNode = GetCurrentThreadNode(threadId);
                 var stackTrace = new StackTrace();
@@ -57,7 +57,7 @@ namespace NetMastery.Lab02CLR.TracerLibrary
                 Stack<TracerMethodNode> currentStackForMethodNodes;
                 if (currentThreadNode != null)
                 {
-                    currentStackForMethodNodes = _stacksForThreads[currentThreadNode];
+                    currentStackForMethodNodes = stacksForThreads[currentThreadNode];
                 }
                 else
                 {
@@ -69,7 +69,7 @@ namespace NetMastery.Lab02CLR.TracerLibrary
                         Root = new List<IMethodNode>()
 
                     };
-                    _stacksForThreads.Add(currentThreadNode, currentStackForMethodNodes);
+                    stacksForThreads.Add(currentThreadNode, currentStackForMethodNodes);
                 }
                 if (currentStackForMethodNodes.Count == 0)
                 {
@@ -80,27 +80,27 @@ namespace NetMastery.Lab02CLR.TracerLibrary
                     currentStackForMethodNodes.Peek().ChildNodes.Add(currentMethodNode);
                 }
                 currentStackForMethodNodes.Push(currentMethodNode);
-                Watch.Start();
+                watch.Start();
             }
         }
 
         public void StopTrace()
         {
-            lock (_stopLock)
+            lock (stopLock)
             {
-                Watch.Stop();
+                watch.Stop();
                 var threadId = Thread.CurrentThread.ManagedThreadId;
                 var currentThreadNode = GetCurrentThreadNode(threadId);
                 if (currentThreadNode == null) throw new NullReferenceException("Stop method is rised before start");
-                var currentStack = _stacksForThreads[currentThreadNode];
+                var currentStack = stacksForThreads[currentThreadNode];
                 if (currentStack.Peek() != null)
                 {
                     var currentMethod = currentStack.Pop();
-                    var time = Watch.ElapsedTicks - currentMethod.GetStartExecutionTime();
-                    currentMethod.ExecutionTime = TimeSpan.FromTicks(time);
-                    currentThreadNode.OverallTime = TimeSpan.FromTicks(currentThreadNode.OverallTime.Ticks + time);
+                    var time = watch.ElapsedMilliseconds - currentMethod.GetStartExecutionTime();
+                    currentMethod.ExecutionTime = TimeSpan.FromMilliseconds(time);
+                    currentThreadNode.OverallTime = TimeSpan.FromMilliseconds(currentThreadNode.OverallTime.Milliseconds + time);
                 }
-                Watch.Start();
+                watch.Start();
             }
         }
 
@@ -108,7 +108,7 @@ namespace NetMastery.Lab02CLR.TracerLibrary
         {
             var frame = stackTrace.GetFrame(1);
             var methodBase = frame.GetMethod();
-            return new TracerMethodNode(Watch.ElapsedTicks)
+            return new TracerMethodNode(watch.ElapsedMilliseconds)
             {
                 MethodName = methodBase.Name,
                 ClassName = methodBase.DeclaringType?.Name,
@@ -119,7 +119,7 @@ namespace NetMastery.Lab02CLR.TracerLibrary
 
         private ThreadNode GetCurrentThreadNode(int threadId)
         {
-            return _stacksForThreads.Keys.FirstOrDefault(x => x.ThreadId == threadId);
+            return stacksForThreads.Keys.FirstOrDefault(x => x.ThreadId == threadId);
         }
     }
 }

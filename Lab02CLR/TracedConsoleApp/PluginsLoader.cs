@@ -90,11 +90,11 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                 }
                 catch (DirectoryNotFoundException)
                 {
-                    Console.WriteLine(Strings.DirectoryException);
+                    Console.WriteLine(Strings.DirectoryNotFoundException);
                 }
                 catch (PathTooLongException)
                 {
-                    Console.WriteLine(Strings.PathTooLong);
+                    Console.WriteLine(Strings.PathTooLongException);
                 }
             }
             return availableFormatters;

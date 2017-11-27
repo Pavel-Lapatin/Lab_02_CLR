@@ -5,13 +5,13 @@
       "ThreadName": null,
       "Root": [
         {
-          "ExecutionTime": "00:00:00.0007947",
+          "ExecutionTime": "00:00:00.0650000",
           "MethodName": "TestMethod1",
           "ClassName": "Program",
           "ParametrCounts": 0,
           "ChildNodes": [
             {
-              "ExecutionTime": "00:00:00.0006938",
+              "ExecutionTime": "00:00:00.0600000",
               "MethodName": "TesMethod2",
               "ClassName": "Program",
               "ParametrCounts": 1,
@@ -20,27 +20,27 @@
           ]
         },
         {
-          "ExecutionTime": "00:00:00.0000018",
+          "ExecutionTime": "00:00:05.0100000",
           "MethodName": "TestMethod3",
           "ClassName": "Program",
           "ParametrCounts": 1,
           "ChildNodes": []
         }
       ],
-      "OverallTime": "00:00:00.0014903"
+      "OverallTime": "00:00:05.1350000"
     },
     {
       "ThreadId": 3,
       "ThreadName": null,
       "Root": [
         {
-          "ExecutionTime": "00:00:00.0003608",
+          "ExecutionTime": "00:00:00.0580000",
           "MethodName": "TestMethod1",
           "ClassName": "Program",
           "ParametrCounts": 0,
           "ChildNodes": [
             {
-              "ExecutionTime": "00:00:00.0002721",
+              "ExecutionTime": "00:00:00.0530000",
               "MethodName": "TesMethod2",
               "ClassName": "Program",
               "ParametrCounts": 1,
@@ -49,7 +49,7 @@
           ]
         }
       ],
-      "OverallTime": "00:00:00.0006329"
+      "OverallTime": "00:00:00.1110000"
     }
   ]
 }

@@ -1,54 +1,14 @@
 <?xml version="1.0" encoding="utf-16"?>
-<XmlTraceResult xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <Root>
-    <ThreadNode>
-      <ThreadId>1</ThreadId>
-      <Root>
-        <MethodNode>
-          <ExecutionTime />
-          <MethodName>TestMethod1</MethodName>
-          <ClassName>Program</ClassName>
-          <ParametrCounts>0</ParametrCounts>
-          <ChildNodes>
-            <MethodNode>
-              <ExecutionTime />
-              <MethodName>TesMethod2</MethodName>
-              <ClassName>Program</ClassName>
-              <ParametrCounts>1</ParametrCounts>
-              <ChildNodes />
-            </MethodNode>
-          </ChildNodes>
-        </MethodNode>
-        <MethodNode>
-          <ExecutionTime />
-          <MethodName>TestMethod3</MethodName>
-          <ClassName>Program</ClassName>
-          <ParametrCounts>1</ParametrCounts>
-          <ChildNodes />
-        </MethodNode>
-      </Root>
-      <OverallTime />
-    </ThreadNode>
-    <ThreadNode>
-      <ThreadId>3</ThreadId>
-      <Root>
-        <MethodNode>
-          <ExecutionTime />
-          <MethodName>TestMethod1</MethodName>
-          <ClassName>Program</ClassName>
-          <ParametrCounts>0</ParametrCounts>
-          <ChildNodes>
-            <MethodNode>
-              <ExecutionTime />
-              <MethodName>TesMethod2</MethodName>
-              <ClassName>Program</ClassName>
-              <ParametrCounts>1</ParametrCounts>
-              <ChildNodes />
-            </MethodNode>
-          </ChildNodes>
-        </MethodNode>
-      </Root>
-      <OverallTime />
-    </ThreadNode>
-  </Root>
-</XmlTraceResult>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <thread id="1" time="103">
+    <method time="54" name="TestMethod1" class="Program" params="0">
+      <method time="49" name="TesMethod2" class="Program" params="1" />
+    </method>
+    <method time="5000" name="TestMethod3" class="Program" params="1" />
+  </thread>
+  <thread id="3" time="101">
+    <method time="53" name="TestMethod1" class="Program" params="0">
+      <method time="48" name="TesMethod2" class="Program" params="1" />
+    </method>
+  </thread>
+</root>
