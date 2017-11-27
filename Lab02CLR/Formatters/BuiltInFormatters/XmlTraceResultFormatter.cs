@@ -1,8 +1,5 @@
 ﻿using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using System.Xml;
 using System.Xml.Serialization;
 
 namespace NetMastery.Lab02CLR.Formatters.BuiltInFormatters
@@ -20,7 +17,7 @@ namespace NetMastery.Lab02CLR.Formatters.BuiltInFormatters
             {
                xmlSerializer.Serialize(textWriter, TraceResulToXmlMapper.MapToXml(traceResult));
                _output = textWriter.ToString();
-            };
+            }
             
         }
 

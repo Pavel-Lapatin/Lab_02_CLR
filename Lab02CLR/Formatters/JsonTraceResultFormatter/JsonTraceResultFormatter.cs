@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
 
-namespace Lab02CLR.Formatters.JsonTraceResultFormatter
+namespace NetMastery.Lab02CLR.Formatters.JsonFormatterPlugin
 {
     public class JsonTraceResultFormatter : ITraceResultFormatter
     {

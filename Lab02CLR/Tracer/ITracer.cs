@@ -1,6 +1,6 @@
 ﻿using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
 
-namespace NetMastery.Lab02CLR.Tracer
+namespace NetMastery.Lab02CLR.TracerLibrary
 {
     public interface ITracer
     {

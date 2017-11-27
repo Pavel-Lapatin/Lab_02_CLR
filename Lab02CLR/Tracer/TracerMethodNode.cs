@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NetMastery.Lab02CLR.Tracer.DataLayer
+namespace NetMastery.Lab02CLR.TracerLibrary
 {
     [Serializable]
-    public class TracerMethodNode : MethodNode
+    internal class TracerMethodNode : MethodNode
     {
         [NonSerialized]
         private readonly long _startExecutionTime;

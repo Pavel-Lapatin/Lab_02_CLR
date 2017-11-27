@@ -1,8 +1,6 @@
 ﻿using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Resources;
 using System.Text;
 
 namespace NetMastery.Lab02CLR.Formatters.BuiltInFormatters
@@ -21,10 +19,10 @@ namespace NetMastery.Lab02CLR.Formatters.BuiltInFormatters
         {
             var strBuilder = new StringBuilder();
             strBuilder.AppendLine("root");
-            for (var i = 0; i < traceResult.Root.Count; i++)
+            foreach (var thread in traceResult.Root)
             {
-                strBuilder.AppendLine($"    thread id {traceResult.Root[i].ThreadId}, time: {traceResult.Root[i].OverallTime.Ticks} ticks");
-                AddMethodNodeInfo(traceResult.Root[i].Root, strBuilder, 1);
+                strBuilder.AppendFormat("    thread id={0}, time={1} ms\n", thread.ThreadId, thread.ThreadId);
+                AddMethodNodeInfo(thread.Root, strBuilder, 1);
                 strBuilder.AppendLine("    thread");
             }
             strBuilder.AppendLine("root");
@@ -37,10 +35,9 @@ namespace NetMastery.Lab02CLR.Formatters.BuiltInFormatters
             pos++;
             while (parentMethod.Count > i)
             {
-                strBuilder.AppendLine($"{String.Concat(Enumerable.Repeat("    ", (pos)))}method Name={parentMethod[i].MethodName}," +
-                    $"time={parentMethod[i].ExecutionTime.Ticks} ticks, " +
-                    $"class={parentMethod[i].ClassName}, " +
-                    $"params={parentMethod[i].ParametrCounts}");
+                strBuilder.AppendFormat("{0}method Name={1}, time={2} ms, class={3}, params={4}\n", string.Concat(Enumerable.Repeat("    ", (pos))),parentMethod[i].MethodName,
+                   parentMethod[i].ExecutionTime.Milliseconds, parentMethod[i].ClassName,parentMethod[i].ParametrCounts);
+
                 if (parentMethod[i].ChildNodes.Count != 0)
                 {
                     AddMethodNodeInfo(parentMethod[i].ChildNodes, strBuilder, pos);

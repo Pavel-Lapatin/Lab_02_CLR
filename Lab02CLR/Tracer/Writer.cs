@@ -1,30 +1,16 @@
 ﻿using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
-using System.IO;
 
-namespace NetMastery.Lab02CLR.Tracer
+namespace NetMastery.Lab02CLR.TracerLibrary
 {
-    public class WriterToFile
+    public abstract class Writer
     {
-        readonly ITraceResultFormatter _formatter;
-        readonly string _filePath;
+        protected ITraceResultFormatter Formatter { get; }
 
-        public WriterToFile(ITraceResultFormatter formatter, string filePath)
+        protected Writer(ITraceResultFormatter formatter)
         {
-            _formatter = formatter;
-            _filePath = filePath;
+            Formatter = formatter;
         }
 
-        public void WriteResult(ITraceResult results)
-        {
-            _formatter.Format(results);
-            if (_filePath == null)
-            {
-                throw new FileNotFoundException();
-            }
-            using (TextWriter writer = File.CreateText(_filePath))
-            {
-                writer.Write(_formatter.GetFormat());
-            }
-        }
+        public abstract void WriteResult(ITraceResult results);
     }
 }

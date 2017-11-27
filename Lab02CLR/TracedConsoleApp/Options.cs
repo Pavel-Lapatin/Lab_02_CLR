@@ -19,6 +19,7 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
             ArgFormat = Cmd.Option(Strings.FormatOptions, Strings.FormatHelp, CommandOptionType.SingleValue);
             ArgOutput = Cmd.Option(Strings.OutputOptions, Strings.OutputHelp, CommandOptionType.SingleValue);
             ArgHelp = Cmd.Option(Strings.HelpOptions, Strings.HelpHelp, CommandOptionType.NoValue);
+
             var allowedFormats = new StringBuilder();
             allowedFormats.Append(Strings.AllowedFormattsBegin);
             foreach (var key in formatters.Keys)
@@ -31,7 +32,11 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
             Cmd.OnExecute(() =>
             {
                 if (ArgHelp.HasValue())  return 0;
-                if (ArgFormat.Value() == null) throw new CommandParsingException(Cmd, Strings.FormatConstraint);
+                if (ArgFormat.Value() == null)
+                {
+                    Cmd.ShowHelp();
+                    throw new CommandParsingException(Cmd, "");
+                }
                 if (ArgFormat.Value().Equals("console") && ArgOutput.Values.Count != 0) ArgOutput.Values[0]= null;
                 if (!formatters.Keys.Contains(ArgFormat.Value()))
                 {

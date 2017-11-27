@@ -6,10 +6,9 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
-using System.Resources;
 using NetMastery.Lab02CLR.Formatters.BuiltInFormatters;
 using NetMastery.Lab02CLR.TracedConsoleApp.Properties;
-using NetMastery.Lab02CLR.Tracer;
+using NetMastery.Lab02CLR.TracerLibrary;
 
 namespace NetMastery.Lab02CLR.TracedConsoleApp
 {
@@ -19,12 +18,9 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
         {
             try
             {
-                Console.WriteLine(System.Reflection.Assembly.GetCallingAssembly().FullName);
+                Console.WriteLine(Assembly.GetCallingAssembly().FullName);
                 Console.WriteLine();
-                var codeBase = Assembly.GetExecutingAssembly().CodeBase;
-                var uri = new UriBuilder(codeBase);
-                var path = Uri.UnescapeDataString(uri.Path);
-                Directory.SetCurrentDirectory(Path.GetDirectoryName(path));
+                SetCurrentDirectory();
                 string filePath = null;
                 try
                 {
@@ -35,10 +31,9 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                     Console.WriteLine(Strings.FileForPluginsNotFoundException);
                 }
                 var formatters = GetAvailableFormatters(filePath);
+                var cmdOptions = new Options(formatters);
                 while (true)
                 {
-
-                    var cmdOptions = new Options(formatters);
                     cmdOptions.Cmd.Execute(args);
                     if (cmdOptions.ArgHelp.HasValue())
                     {
@@ -46,7 +41,10 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                         char[] separators = {' '};
                         Console.WriteLine(Strings.InputNote);
                         var arguments = Console.ReadLine();
-                        args = arguments.Split(separators);
+                        if (!string.IsNullOrEmpty(arguments))
+                        {
+                            args = arguments.Split(separators);
+                        } 
                     }
                     else
                     {
@@ -60,14 +58,14 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                         {
                             if (cmdOptions.ArgFormat.Value() == "console")
                             {
-                                var writer = new WriterToConsole(formatters["console"]);
-                                writer.WriteResult(Tracer.Tracer.Instance.GetTraceResult());
+                                var writer = new ConsoleWriter(formatters["console"]);
+                                writer.WriteResult(Tracer.Instance.GetTraceResult());
                             }
                             else
                             {
-                                  var writer = new WriterToFile(formatters[cmdOptions.ArgFormat.Value()],
+                                  var writer = new FileWriter(formatters[cmdOptions.ArgFormat.Value()],
                                         cmdOptions.ArgOutput.Value());
-                                    writer.WriteResult(Tracer.Tracer.Instance.GetTraceResult());
+                                    writer.WriteResult(Tracer.Instance.GetTraceResult());
                                 Console.WriteLine(Strings.SuccessWriting);
                             }
                         }
@@ -75,7 +73,6 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                         {
                             Console.WriteLine(Strings.OutputFileException);
                         }
-
                         break;
                     }
                 }
@@ -95,55 +92,66 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
 
         public static void TestMethod1()
         {
-            Tracer.Tracer.Instance.StartTrace();
+            Tracer.Instance.StartTrace();
             double result = 0;
             for (var i = 0; i < 10000; i++)
             {
                 result += Math.Sqrt(i);
             }
             TesMethod2(result);
-            Tracer.Tracer.Instance.StopTrace();
+            Tracer.Instance.StopTrace();
         }
 
         public static void TesMethod2(double res)
         {
-            Tracer.Tracer.Instance.StartTrace();
+            Tracer.Instance.StartTrace();
             for (var i = 0; i < 10000; i++)
             {
                 res -= Math.Pow(i, 2);
             }
-            Tracer.Tracer.Instance.StopTrace();
+            Tracer.Instance.StopTrace();
         }
 
         public static string TestMethod3(string text)
         {
-            Tracer.Tracer.Instance.StartTrace();
+            Tracer.Instance.StartTrace();
             try
             {
                 return $"{text}";
             }
             finally
             {
-                Tracer.Tracer.Instance.StopTrace();
+                Tracer.Instance.StopTrace();
             }
         }
 
         public static IDictionary<string, ITraceResultFormatter> GetAvailableFormatters(string path)
         {
             IDictionary<string, ITraceResultFormatter> availableFormatters = new Dictionary<string, ITraceResultFormatter>();
+            availableFormatters.Add("console", new ConsoleTraceResultFormatter());
+            availableFormatters.Add("xml", new XmlTraceResultFormatter());
+            if (path == null) return availableFormatters;
             try
             {
-                availableFormatters.Add("console", new ConsoleTraceResultFormatter());
-                availableFormatters.Add("xml", new XmlTraceResultFormatter());
+                PluginsLoader.LoadPlugins(path, availableFormatters);
             }
             catch (ArgumentException)
             {
-                //This formaters just won't be presented as available
+                
             }
-            
-            if (path == null) return availableFormatters;
-            PluginsLoader.LoadPlugins(path, availableFormatters);
             return availableFormatters;
+        }
+
+        private static void SetCurrentDirectory()
+        {
+            var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+            var uri = new UriBuilder(codeBase);
+            var path = Uri.UnescapeDataString(uri.Path);
+            var directoryPath = Path.GetDirectoryName(path);
+            if (directoryPath != null)
+            {
+                Directory.SetCurrentDirectory(directoryPath);
+            }
         }
     }
 }

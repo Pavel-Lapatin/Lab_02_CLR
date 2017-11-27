@@ -1,25 +1,23 @@
 ﻿using NetMastery.Lab02CLR.Formatters.FormatterPluginContract;
-using NetMastery.Lab02CLR.Tracer.DataLayer;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 
-namespace NetMastery.Lab02CLR.Tracer
+namespace NetMastery.Lab02CLR.TracerLibrary
 {
     public class Tracer : ITracer
     {
-        private static Tracer _instance = null;
-        private readonly IDictionary<ThreadNode, Stack<TracerMethodNode>> _stacksForThreads = new Dictionary<ThreadNode, Stack<TracerMethodNode>>();
+        private static Tracer _instance;
+
+        private readonly IDictionary<ThreadNode, Stack<TracerMethodNode>> _stacksForThreads =
+            new Dictionary<ThreadNode, Stack<TracerMethodNode>>();
+
         private static readonly Stopwatch Watch = new Stopwatch();
         private readonly object _startLock = new object();
         private readonly object _stopLock = new object();
-        private static readonly object  CtortLock = new object();
-
-        private Tracer()
-        {
-        }
+        private static readonly object CtortLock = new object();
 
         public static Tracer Instance
         {
@@ -42,7 +40,7 @@ namespace NetMastery.Lab02CLR.Tracer
             var results = new TraceResult();
             foreach (var thread in _stacksForThreads.Keys)
             {
-                    results.Root.Add(thread);
+                results.Root.Add(thread);
             }
             return results;
         }
@@ -52,26 +50,18 @@ namespace NetMastery.Lab02CLR.Tracer
             lock (_startLock)
             {
                 Watch.Stop();
-                var stackTrace = new StackTrace();
-                var frame = stackTrace.GetFrame(1);
-                var methodBase = frame.GetMethod();
-                var currentMethod = new TracerMethodNode(Watch.ElapsedTicks)
-                {
-                    MethodName = methodBase.Name,
-                    ClassName = methodBase.DeclaringType?.Name,
-                    ParametrCounts = methodBase.GetParameters().Length,
-                    ChildNodes = new List<IMethodNode>(),
-                };
                 var threadId = Thread.CurrentThread.ManagedThreadId;
-                var currentThreadNode = _stacksForThreads.Keys?.FirstOrDefault(x => x.ThreadId == threadId);
-                Stack<TracerMethodNode> currentMethodStack;
+                var currentThreadNode = GetCurrentThreadNode(threadId);
+                var stackTrace = new StackTrace();
+                var currentMethodNode = GetCurrentMethodNode(stackTrace);
+                Stack<TracerMethodNode> currentStackForMethodNodes;
                 if (currentThreadNode != null)
                 {
-                    currentMethodStack = _stacksForThreads[currentThreadNode];
+                    currentStackForMethodNodes = _stacksForThreads[currentThreadNode];
                 }
                 else
                 {
-                    currentMethodStack = new Stack<TracerMethodNode>();
+                    currentStackForMethodNodes = new Stack<TracerMethodNode>();
                     currentThreadNode = new ThreadNode
                     {
                         ThreadId = threadId,
@@ -79,17 +69,17 @@ namespace NetMastery.Lab02CLR.Tracer
                         Root = new List<IMethodNode>()
 
                     };
-                    _stacksForThreads.Add(currentThreadNode, currentMethodStack);
+                    _stacksForThreads.Add(currentThreadNode, currentStackForMethodNodes);
                 }
-                if (currentMethodStack.Count == 0)
+                if (currentStackForMethodNodes.Count == 0)
                 {
-                    currentThreadNode.Root.Add(currentMethod);
+                    currentThreadNode.Root.Add(currentMethodNode);
                 }
                 else
                 {
-                    currentMethodStack.Peek().ChildNodes.Add(currentMethod);
+                    currentStackForMethodNodes.Peek().ChildNodes.Add(currentMethodNode);
                 }
-                currentMethodStack.Push(currentMethod);
+                currentStackForMethodNodes.Push(currentMethodNode);
                 Watch.Start();
             }
         }
@@ -100,7 +90,7 @@ namespace NetMastery.Lab02CLR.Tracer
             {
                 Watch.Stop();
                 var threadId = Thread.CurrentThread.ManagedThreadId;
-                var currentThreadNode = _stacksForThreads.Keys?.FirstOrDefault(x => x.ThreadId == threadId);
+                var currentThreadNode = GetCurrentThreadNode(threadId);
                 if (currentThreadNode == null) throw new NullReferenceException("Stop method is rised before start");
                 var currentStack = _stacksForThreads[currentThreadNode];
                 if (currentStack.Peek() != null)
@@ -112,6 +102,24 @@ namespace NetMastery.Lab02CLR.Tracer
                 }
                 Watch.Start();
             }
+        }
+
+        private TracerMethodNode GetCurrentMethodNode(StackTrace stackTrace)
+        {
+            var frame = stackTrace.GetFrame(1);
+            var methodBase = frame.GetMethod();
+            return new TracerMethodNode(Watch.ElapsedTicks)
+            {
+                MethodName = methodBase.Name,
+                ClassName = methodBase.DeclaringType?.Name,
+                ParametrCounts = methodBase.GetParameters().Length,
+                ChildNodes = new List<IMethodNode>(),
+            };
+        }
+
+        private ThreadNode GetCurrentThreadNode(int threadId)
+        {
+            return _stacksForThreads.Keys.FirstOrDefault(x => x.ThreadId == threadId);
         }
     }
 }

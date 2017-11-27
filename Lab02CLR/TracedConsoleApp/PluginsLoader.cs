@@ -3,9 +3,8 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
+using System.Linq;
 using System.Reflection;
-using System.Resources;
 using System.Runtime.InteropServices;
 using System.Security;
 using NetMastery.Lab02CLR.TracedConsoleApp.Properties;
@@ -25,65 +24,33 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
             {
                 try
                 {
-                    var dllFileNames = Directory.GetFiles(path, "*.dll");
-                    ICollection<Assembly> assemblies = new List<Assembly>();
-                    foreach (var dllFile in dllFileNames)
+                    var assemblies = RetriveAssembliesFromDirectory(path);
+                    var pluginTypes = new List<Type>();
+                    foreach (var assembly in assemblies)
                     {
                         try
                         {
-                            var assemblyName = AssemblyName.GetAssemblyName(dllFile);
-                            var assembly = Assembly.Load(assemblyName);
-                            assemblies.Add(assembly);
-                        }
-                        catch (FileLoadException e)
-                        {
-                            Console.WriteLine($"{Strings.AssemblyLoadException} {e.Source}");
-                        }
-                        catch (FileNotFoundException e)
-                        {
-                            Console.WriteLine($"{Strings.AssemblyLoadException} {e.Source}");
-                        }
-                        catch (BadImageFormatException e)
-                        {
-                            Console.WriteLine($"{Strings.AssemblyLoadException} {e.Source}");
-                        }
-                        catch (SecurityException e)
-                        {
-                            Console.WriteLine($"{Strings.UnathorizedException} {e.Source}");
-                        }
-                    }
-                    var pluginType = typeof(ITraceResultFormatter);
-                    ICollection<Type> pluginTypes = new List<Type>();
-                    foreach (var assembly in assemblies)
-                    {
-                        if (assembly != null)
-                        {
-                            try
+                            var pluginType = typeof(ITraceResultFormatter);
+                            foreach (var type in assembly.GetTypes().Where(x =>
+                                !(x.IsInterface || x.IsAbstract) && x.GetInterface(pluginType.FullName) != null))
                             {
-                                foreach (var type in assembly.GetTypes())
+                                try
                                 {
-                                    try
-                                    {
-                                        if (!(type.IsInterface || type.IsAbstract) &&
-                                            type.GetInterface(pluginType.FullName) != null)
-                                        {
-                                            pluginTypes.Add(type);
-                                        }
-                                    }
-                                    catch (ReflectionTypeLoadException)
-                                    {
-                                        Console.WriteLine(Strings.PluginTypeAddException);
-                                    }
-                                    catch (AmbiguousMatchException)
-                                    {
-                                        Console.WriteLine(Strings.PluginTypeAddException);
-                                    }
+                                    pluginTypes.Add(type);
+                                }
+                                catch (ReflectionTypeLoadException)
+                                {
+                                    Console.WriteLine(Strings.PluginTypeAddException);
+                                }
+                                catch (AmbiguousMatchException)
+                                {
+                                    Console.WriteLine(Strings.PluginTypeAddException);
                                 }
                             }
-                            catch(ReflectionTypeLoadException)
-                            {
-                                Console.WriteLine(Strings.ReflectionTypesException);
-                            };
+                        }
+                        catch (ReflectionTypeLoadException)
+                        {
+                            Console.WriteLine(Strings.ReflectionTypesException);
                         }
                     }
                     foreach (var type in pluginTypes)
@@ -96,23 +63,23 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                         }
                         catch (ArgumentException e)
                         {
-                            Console.WriteLine();
+                            Console.WriteLine(Strings.PluginTypeAddException + e.Source);
                         }
                         catch (MemberAccessException e)
                         {
-                            Console.WriteLine($"{Strings.PluginTypeAddException} {e.Source}");
+                            Console.WriteLine(Strings.PluginTypeAddException+e.Source);
                         }
                         catch (TypeLoadException e)
                         {
-                            Console.WriteLine($"{Strings.PluginTypeAddException} {e.Source}");
+                            Console.WriteLine(Strings.PluginTypeAddException+e.Source);
                         }
                         catch (TargetException e)
                         {
-                            Console.WriteLine($"{Strings.PluginTypeAddException} {e.Source}");
+                            Console.WriteLine(Strings.PluginTypeAddException+e.Source);
                         }
                         catch (InvalidComObjectException e)
                         {
-                            Console.WriteLine($"{Strings.PluginTypeAddException} {e.Source}");
+                            Console.WriteLine(Strings.PluginTypeAddException+e.Source);
                         }
                     }
                     return availableFormatters;
@@ -131,6 +98,41 @@ namespace NetMastery.Lab02CLR.TracedConsoleApp
                 }
             }
             return availableFormatters;
+        }
+
+        private static IEnumerable<Assembly> RetriveAssembliesFromDirectory(string path)
+        {
+            var dllFileNames = Directory.GetFiles(path, "*.dll");
+            ICollection<Assembly> assemblies = new List<Assembly>();
+            foreach (var dllFile in dllFileNames)
+            {
+                try
+                {
+                    var assemblyName = AssemblyName.GetAssemblyName(dllFile);
+                    var assembly = Assembly.Load(assemblyName);
+                    if (assembly != null)
+                    {
+                        assemblies.Add(assembly);
+                    }
+                }
+                catch (FileLoadException e)
+                {
+                    Console.WriteLine(Strings.AssemblyLoadException+e.Source);
+                }
+                catch (FileNotFoundException e)
+                {
+                    Console.WriteLine(Strings.AssemblyLoadException+e.Source);
+                }
+                catch (BadImageFormatException e)
+                {
+                    Console.WriteLine(Strings.AssemblyLoadException+e.Source);
+                }
+                catch (SecurityException e)
+                {
+                    Console.WriteLine(Strings.UnathorizedException+e.Source);
+                }
+            }
+            return assemblies;
         }
     }
 }
