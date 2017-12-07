@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-16"?>
+<root xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <thread id="1" time="103">
+    <method time="54" name="TestMethod1" class="Program" params="0">
+      <method time="49" name="TesMethod2" class="Program" params="1" />
+    </method>
+    <method time="5000" name="TestMethod3" class="Program" params="1" />
+  </thread>
+  <thread id="3" time="101">
+    <method time="53" name="TestMethod1" class="Program" params="0">
+      <method time="48" name="TesMethod2" class="Program" params="1" />
+    </method>
+  </thread>
+</root>

@@ -1,0 +1,9 @@
+.vs/**
+packages
+Lab02CLR/**/packages
+Lab02CLR/**/bin
+Lab02CLR/**/obj
+Lab02CLR/**/.vs
+Lab02CLR/**/*.dll
+Lab02CLR/**/*.exe
+Lab02CLR/**/*.log
